@@ -1,0 +1,1359 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../T0_3/">
+      
+      
+        <link rel="next" href="../T0_5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>RTOS Introduction - Embedded Systems II (13409)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rtos-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Embedded Systems II (13409)" class="md-header__button md-logo" aria-label="Embedded Systems II (13409)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Embedded Systems II (13409)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RTOS Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Embedded Systems II (13409)" class="md-nav__button md-logo" aria-label="Embedded Systems II (13409)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Embedded Systems II (13409)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Systems II (13409)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources for class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M0 Fundamentals and Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M0 Fundamentals and Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Documentation 
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP-IDF Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hard-vs-soft-real-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard vs Soft Real-Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-programming-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview of Programming Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of Programming Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#superloop-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Superloop Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtos-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTOS Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-superloop-vs-rtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: Superloop vs. RTOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-an-rtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why use an RTOS?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-ideas-of-an-rtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Ideas of an RTOS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Ideas of an RTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tasks-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tasks (Threads)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scheduler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Context Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-blocking-vs-non-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Blocking vs. Non-blocking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-inter-task-communication-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Inter-task Communication (Queues)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-semaphores-mutexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Semaphores &amp; Mutexes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-and-priorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling and Priorities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling and Priorities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preemptive-vs-cooperative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preemptive vs. Cooperative
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-choose-priorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Choose Priorities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-identify-logical-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Identify Logical Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-task-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Task Characteristics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-priority-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Priority Reasoning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-design-judgment-trick-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Design Judgment (Trick Question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-identifying-hidden-tasks-in-pseudo-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Identifying Hidden Tasks in Pseudo-Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-51-identify-hidden-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 5.1 — Identify Hidden Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-52-blocking-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 5.2 — Blocking Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-53-rtos-refactoring-thought-experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 5.3 — RTOS Refactoring Thought Experiment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submission-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Basics with ESP-IDF LAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rtos-introduction">RTOS Introduction</h1>
+<h2 id="hard-vs-soft-real-time">Hard vs Soft Real-Time</h2>
+<ul>
+<li><strong>Hard real-time</strong>: Missing a deadline is a system failure (e.g., airbag deployment).</li>
+<li><strong>Soft real-time</strong>: Deadlines matter, but occasional misses degrade performance rather than cause failure (e.g., audio buffering).</li>
+</ul>
+<h2 id="overview-of-programming-models">Overview of Programming Models</h2>
+<p>Embedded systems programming often uses two main models.</p>
+<h3 id="superloop-definition">Superloop Definition</h3>
+<p>A superloop is a common bare-metal firmware structure where the program runs an infinite <code>while(1)</code> loop (“main loop”). It repeatedly calls functions to handle tasks—like reading inputs, updating outputs, and running state machines—often using interrupts to handle urgent events.</p>
+<h3 id="rtos-definition">RTOS Definition</h3>
+<p>A Real-Time Operating System (RTOS) is a lightweight operating system designed to run applications where timing matters. Unlike general-purpose OSes (PC/phone), an RTOS focuses on predictable response times so the system can react to events within known deadlines.</p>
+<h3 id="comparison-superloop-vs-rtos">Comparison: Superloop vs. RTOS</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Superloop</th>
+<th style="text-align: left;">RTOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Execution Model</strong></td>
+<td style="text-align: left;">One main loop runs everything in a fixed/semi-fixed order.</td>
+<td style="text-align: left;">Multiple tasks/threads run under a scheduler (priority-based).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Responsiveness</strong></td>
+<td style="text-align: left;">Depends on loop length; long operations delay everything.</td>
+<td style="text-align: left;">High; priorities and preemption ensure urgent tasks run quickly.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Complexity</strong></td>
+<td style="text-align: left;">Simple to start; gets messy as features grow (flags, spaghetti code).</td>
+<td style="text-align: left;">Higher upfront complexity; scales better for large systems.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Determinism</strong></td>
+<td style="text-align: left;">Deterministic if strictly timed (no blocking) and ISRs are bounded.</td>
+<td style="text-align: left;">Supports deterministic behavior when ISR time, priorities, and shared resources are engineered correctly.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resource Usage</strong></td>
+<td style="text-align: left;">Minimal overhead (fewer stacks, no scheduler).</td>
+<td style="text-align: left;">Higher RAM/Flash usage (task stacks, TCBs, context switching).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Synchronization</strong></td>
+<td style="text-align: left;">Manual (globals, flags, ring buffers).</td>
+<td style="text-align: left;">Built-in primitives (Queues, Semaphores, Mutexes).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Best Fit</strong></td>
+<td style="text-align: left;">Small/simple products, tight memory constraints.</td>
+<td style="text-align: left;">Complex systems, multiple concurrent protocols, modular design.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-use-an-rtos">Why use an RTOS?</h2>
+<p>In embedded systems, you often need to handle multiple things “at once,” such as:
+* Reading sensors
+* Driving motors or actuators
+* Managing communication (UART/I2C/SPI/CAN/Ethernet)
+* Updating a UI or logging data</p>
+<p>An RTOS helps you structure this cleanly by splitting work into <strong>Tasks</strong> and letting the scheduler decide who runs when.</p>
+<blockquote>
+<p><strong>Engineering judgement:</strong> If a system is small, timing is simple, and RAM is tight, a well-structured superloop may be the better choice.</p>
+</blockquote>
+<h2 id="core-ideas-of-an-rtos">Core Ideas of an RTOS</h2>
+<h3 id="1-tasks-threads">1. Tasks (Threads)</h3>
+<p>Independent functions that run “concurrently” via scheduling.
+* <strong>Note:</strong> Time slicing (round-robin) is typically optional and usually applies <strong>only among tasks of equal priority</strong> when enabled.
+* <strong>Example:</strong>
+    * <code>SensorTask</code>: reads IMU every 10 ms
+    * <code>ControlTask</code>: runs PID at 1 kHz
+    * <code>CommsTask</code>: sends telemetry at 50 Hz</p>
+<h3 id="2-scheduler">2. Scheduler</h3>
+<p>The kernel component that chooses the next task to run, usually based on priority.
+* <strong>Example:</strong>
+    * <code>ControlTask</code> has higher priority than <code>LoggingTask</code>.
+    * If <code>ControlTask</code> becomes ready, it can preempt <code>LoggingTask</code> immediately (in a preemptive configuration).</p>
+<blockquote>
+<p><strong>Timing note:</strong> Real-time behavior depends on <strong>tick rate</strong>, <strong>ISR latency</strong>, and how long interrupts/critical sections block scheduling.</p>
+</blockquote>
+<h3 id="3-context-switch">3. Context Switch</h3>
+<p>The action of saving the current task’s CPU state (registers, stack pointer) and restoring another’s so the CPU can run a different task.
+* <strong>Example:</strong>
+    * A low-priority task is running. An interrupt wakes a high-priority task → the RTOS saves the low-priority context and switches to the high-priority one.</p>
+<h3 id="4-blocking-vs-non-blocking">4. Blocking vs. Non-blocking</h3>
+<p>Tasks can wait (block) for events/resources or run without waiting.
+* <strong>Example:</strong>
+    * <code>SensorTask</code> blocks (sleeps) for ~10 ms using <code>vTaskDelay(pdMS_TO_TICKS(10))</code> (tick rate dependent).
+    * <code>CommsTask</code> runs periodically to check a buffer (polling).</p>
+<blockquote>
+<p><strong>Design pitfall:</strong> A high-priority task that never blocks/yields can starve lower-priority work.</p>
+</blockquote>
+<h3 id="5-inter-task-communication-queues">5. Inter-task Communication (Queues)</h3>
+<p>Thread-safe mechanisms to pass data between tasks, typically in FIFO order.
+* <strong>Example:</strong> <code>SensorTask</code> sends measurements to <code>ControlTask</code> via a queue.
+    * <strong>Producer:</strong> Puts <code>{temp, accel, gyro}</code> into queue.
+    * <strong>Consumer:</strong> Pops the next sample in <strong>FIFO order</strong>.</p>
+<blockquote>
+<p><strong>“Latest value” pattern:</strong> If you want the consumer to always use the most recent value (not FIFO history), consider a <strong>length-1 queue with overwrite</strong>, a <strong>shared struct + mutex</strong>, or <strong>task notifications</strong> (depending on your RTOS).</p>
+</blockquote>
+<h3 id="6-semaphores-mutexes">6. Semaphores &amp; Mutexes</h3>
+<p>Synchronization objects used to signal events or manage access to limited resources.</p>
+<ul>
+<li><strong>Binary Semaphore:</strong> Signals "something happened" (0/1).<ul>
+<li><em>Example:</em> An ISR gives a semaphore when a UART packet arrives; <code>CommsTask</code> takes it to process data.<br />
+<em>(FreeRTOS pattern: <code>xSemaphoreGiveFromISR()</code> in ISR, <code>xSemaphoreTake()</code> in task.)</em></li>
+</ul>
+</li>
+<li><strong>Counting Semaphore:</strong> Tracks multiple identical resources.<ul>
+<li><em>Example:</em> Counting slots in a buffer pool.</li>
+</ul>
+</li>
+<li><strong>Mutex:</strong> Protects a shared resource (like an I2C bus) from being accessed by two tasks simultaneously.<ul>
+<li><em>Note:</em> Many RTOSes (including FreeRTOS) support <strong>priority inheritance</strong> with mutexes, helping reduce priority inversion.</li>
+</ul>
+</li>
+</ul>
+<h2 id="task-states">Task States</h2>
+<p>At any given time, a task is in one of the following states:</p>
+<ol>
+<li>
+<p><strong>Running</strong></p>
+<ul>
+<li><em>Definition:</em> The task is currently executing on the CPU.</li>
+<li><em>Example:</em> <code>ControlTask</code> is calculating PWM duty cycle.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ready</strong></p>
+<ul>
+<li><em>Definition:</em> The task is able to run immediately but is waiting for the CPU (because another Ready task is currently running—often a higher priority task, or a same-priority task depending on time slicing).</li>
+<li><em>Example:</em> <code>CommsTask</code> has data to send, but <code>ControlTask</code> is currently using the CPU.</li>
+</ul>
+</li>
+<li>
+<p><strong>Blocked</strong></p>
+<ul>
+<li><em>Definition:</em> The task is waiting for an event (time, data, semaphore) and cannot run until that event occurs.</li>
+<li><em>Example:</em> <code>SensorTask</code> is sleeping for ~10 ms via <code>vTaskDelay(pdMS_TO_TICKS(10))</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Suspended</strong></p>
+<ul>
+<li><em>Definition:</em> Explicitly taken out of scheduling; will not run until explicitly resumed.</li>
+<li><em>Example:</em> <code>LoggingTask</code> is suspended to prevent flash writes during a critical motor startup phase.</li>
+</ul>
+</li>
+<li>
+<p><strong>Deleted</strong></p>
+<ul>
+<li><em>Definition:</em> The task has been removed from the kernel; its resources are freed.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="RTOS Scheduling" src="../Images/task_scheduling.jpeg" /><br />
+<img alt="RTOS Task States" src="../Images/tskstate.gif" /></p>
+<h2 id="scheduling-and-priorities">Scheduling and Priorities</h2>
+<p>The scheduler decides which <strong>Ready</strong> task runs. Most embedded RTOSes use <strong>Preemptive Priority-Based Scheduling</strong>:</p>
+<blockquote>
+<p><strong>Rule:</strong> The highest-priority Ready task <em>always</em> runs. Lower-priority tasks run only when higher ones are Blocked, Suspended, or Deleted.</p>
+</blockquote>
+<p>If multiple tasks share the highest Ready priority, the scheduler selects among them (often round-robin if time slicing is enabled).</p>
+<h3 id="preemptive-vs-cooperative">Preemptive vs. Cooperative</h3>
+<ul>
+<li><strong>Preemptive (Standard):</strong> A high-priority task can interrupt a low-priority task immediately when it becomes Ready.</li>
+<li><strong>Cooperative:</strong> Tasks run until they voluntarily yield or block. Simpler, but easier to hang the system.</li>
+</ul>
+<h3 id="how-to-choose-priorities">How to Choose Priorities</h3>
+<p>Assign priorities based on deadline strictness and failure consequences:</p>
+<ol>
+<li><strong>High (Safety / Hard Deadlines):</strong> Motor control, protection loops, watchdog checks.</li>
+<li><strong>Medium-High (Real-time I/O):</strong> Draining UART/SPI buffers, handling packets.</li>
+<li><strong>Medium (App Logic):</strong> Parsing, decision making, state machines.</li>
+<li><strong>Low (Background):</strong> Logging, UI updates, debug printing.</li>
+</ol>
+<hr />
+<h2 id="activities">Activities</h2>
+<h3 id="exercise-objective">Exercise Objective</h3>
+<p>The goal of this exercise is to train you to <strong>identify logical FreeRTOS tasks from system behavior</strong>, even when no RTOS code is shown.</p>
+<p>You should focus on:</p>
+<ul>
+<li>Timing requirements</li>
+<li>Blocking behavior</li>
+<li>Safety and criticality</li>
+<li>Independent execution flows</li>
+</ul>
+<p>Think in terms of <strong>"what must happen independently"</strong>, not functions or lines of code.</p>
+<hr />
+<h3 id="system-description">System Description</h3>
+<p>You are given the following description of an embedded system:</p>
+<blockquote>
+<p>The system:</p>
+<ul>
+<li>Reads a temperature sensor every <strong>50 ms</strong></li>
+<li>Sends sensor data via <strong>Wi-Fi every 2 seconds</strong></li>
+<li>Monitors an <strong>emergency button continuously</strong></li>
+<li>Blinks a <strong>status LED at 1 Hz</strong></li>
+<li>Stores <strong>error messages</strong> when failures occur</li>
+</ul>
+</blockquote>
+<p>Assume:</p>
+<ul>
+<li>The system runs on a microcontroller</li>
+<li>Timing matters</li>
+<li>Some operations may block (Wi-Fi, storage)</li>
+</ul>
+<hr />
+<h3 id="exercise-1-identify-logical-tasks">Exercise 1 — Identify Logical Tasks</h3>
+<p>List the <strong>logical tasks</strong> that exist in this system.</p>
+<blockquote>
+<p>Do <strong>not</strong> think about code yet — think about behavior.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Task Name (Your Choice)</th>
+<th>Trigger (Time / Event)</th>
+<th>Periodic or Event-Based</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="exercise-2-task-characteristics">Exercise 2 — Task Characteristics</h3>
+<p>For <strong>each task</strong> you identified, answer the following:</p>
+<ul>
+<li>Is it <strong>time-critical</strong>? (Yes / No)</li>
+<li>Can it <strong>block safely</strong>? (Yes / No)</li>
+<li>What happens if this task is <strong>delayed</strong>?</li>
+</ul>
+<p>Write short, technical answers.</p>
+<hr />
+<h3 id="exercise-3-priority-reasoning">Exercise 3 — Priority Reasoning</h3>
+<p>Assign a <strong>relative priority</strong> to each task:</p>
+<ul>
+<li>High</li>
+<li>Medium</li>
+<li>Low</li>
+</ul>
+<p>Then justify each choice in <strong>one sentence</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Task Name</th>
+<th>Priority (H/M/L)</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="exercise-4-design-judgment-trick-question">Exercise 4 — Design Judgment (Trick Question)</h3>
+<p>Which of the following <strong>should NOT necessarily be implemented as a FreeRTOS task</strong>?</p>
+<ul>
+<li>Emergency button monitoring</li>
+<li>Wi-Fi transmission</li>
+<li>Error logging</li>
+<li>Status LED blinking</li>
+</ul>
+<p>Explain <strong>why</strong> in 2–3 sentences.</p>
+<hr />
+<h3 id="exercise-5-identifying-hidden-tasks-in-pseudo-code">Exercise 5 — Identifying Hidden Tasks in Pseudo-Code</h3>
+<p>The following pseudo-code represents a <strong>single-loop embedded program</strong> written without an RTOS.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">read_temperature_sensor</span><span class="p">();</span><span class="w">          </span><span class="c1">// takes ~2 ms</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">button_pressed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">emergency_shutdown</span><span class="p">();</span><span class="w">            </span><span class="c1">// must react immediately</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">time_since_last_send</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">send_data_over_wifi</span><span class="p">();</span><span class="w">            </span><span class="c1">// may block for 100–300 ms</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">toggle_status_led</span><span class="p">();</span><span class="w">                 </span><span class="c1">// 1 Hz blink rate</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h3 id="task-51-identify-hidden-tasks">Task 5.1 — Identify Hidden Tasks</h3>
+<p>Even though this code uses a single <code>while(1)</code> loop, multiple <strong>logical tasks</strong> are hidden inside it.</p>
+<p>List the tasks you can identify.</p>
+<table>
+<thead>
+<tr>
+<th>Hidden Task</th>
+<th>Trigger (Time / Event)</th>
+<th>Why it should be a Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="task-52-blocking-analysis">Task 5.2 — Blocking Analysis</h3>
+<p>Answer the following:</p>
+<ol>
+<li>Which function can <strong>block the CPU</strong>?</li>
+<li>What other behaviors are affected while it blocks?</li>
+<li>Which hidden task is <strong>most at risk</strong> because of this blocking?</li>
+</ol>
+<hr />
+<h3 id="task-53-rtos-refactoring-thought-experiment">Task 5.3 — RTOS Refactoring Thought Experiment</h3>
+<p>Without writing code:</p>
+<ol>
+<li>Which hidden task(s) should become <strong>FreeRTOS tasks</strong>?</li>
+<li>Which behavior(s) should be handled using an <strong>interrupt</strong>?</li>
+<li>Which task should have the <strong>highest priority</strong>, and why?</li>
+</ol>
+<p>Write short, technical justifications.</p>
+<hr />
+<h3 id="submission-instructions">Submission Instructions</h3>
+<ul>
+<li>Complete individually</li>
+<li>Be prepared to justify your answers orally</li>
+<li>No single correct solution — <strong>logic and justification matter</strong></li>
+</ul>
+<hr />
+<div class="nav-row nav-row--before-after">
+    <a href="../T0_3" class="md-button md-button--primary"><- Workflow</a>
+    <a href="" class="md-button md-button--primary">In progress -></a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tooltips", "toc.integrate", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
