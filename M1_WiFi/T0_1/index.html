@@ -1,0 +1,1733 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../M0_Fundamentals_and_Tools/T0_5/">
+      
+      
+        <link rel="next" href="../T0_2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Wi‑Fi Foundations - Embedded Systems II (13409)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wifi-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Embedded Systems II (13409)" class="md-header__button md-logo" aria-label="Embedded Systems II (13409)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Embedded Systems II (13409)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wi‑Fi Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Embedded Systems II (13409)" class="md-nav__button md-logo" aria-label="Embedded Systems II (13409)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Embedded Systems II (13409)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Systems II (13409)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources for class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fab academy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fab academy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Fab_academy/T0_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fab Academy Communications ARDUINO IDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Fab_academy/T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fab Academy Communications MicroPython
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M0 Fundamentals and Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M0 Fundamentals and Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M0_Fundamentals_and_Tools/T0_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M0_Fundamentals_and_Tools/T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Documentation 
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M0_Fundamentals_and_Tools/T0_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP-IDF Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M0_Fundamentals_and_Tools/T0_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M0_Fundamentals_and_Tools/T0_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Basics with ESP-IDF LAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 WiFi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M1 WiFi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi‑Fi Foundations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi‑Fi Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wi-fi-base-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi Base Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wi-Fi Base Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reliability-and-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reliability and Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-medium-and-contention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Medium and Contention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wi-fi-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wi-Fi Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-wi-fi-radio-l1-80211-phymac-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Wi-Fi radio (L1) + 802.11 (PHY/MAC) (L2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ip-internet-protocol-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) IP (Internet Protocol) (L3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transport-tcpudp-l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Transport (TCP/UDP) (L4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-protocols-l5-l7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application Protocols (L5-L7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rf-channel-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF + Channel basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RF + Channel basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frequency-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frequency Bands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal Quality Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#80211-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        802.11 Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="802.11 Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roles-and-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roles and identities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frames-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frames types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Join sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-layer-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Layer Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Layer Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addressing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-resource-and-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL, resource, and endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-vs-post-the-minimum-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET vs POST (the minimum you need)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-parameters-vs-body-payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query parameters vs body payload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MQTT Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MQTT Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publish-vs-subscribe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publish vs Subscribe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qos-quality-of-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QoS (Quality of Service)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-FI Programming Lab: HTTP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T0_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi‑Fi Programming Lab: MQTT Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M2 Bluetooth
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M2 Bluetooth
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M2_Bluetooth/T0_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth Low Energy (BLE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M2_Bluetooth/T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLE Labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M3 MeshComms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M3 MeshComms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M3_MeshComms/T0_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP-NOW
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../M3_MeshComms/T0_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP-NOW Applied Exercises with Peripherals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="wifi-foundations">Wi‑Fi Foundations</h1>
+<hr />
+<p>Wi-Fi is a family of wireless network protocols based on the IEEE 802.11 family of standards, which are commonly used for local area networking of devices and Internet access. Wi-Fi works as <strong>a</strong> shared medium, where multiple devices can communicate over the same radio frequency. </p>
+<h2 id="wi-fi-base-concepts">Wi-Fi Base Concepts</h2>
+<h3 id="reliability-and-errors">Reliability and Errors</h3>
+<p>On a wire, bits usually arrive with very low error rates (unless something is broken).
+Over the air, packets can get corrupted or lost because of:</p>
+<ul>
+<li>Interference (other Wi-Fi networks, Bluetooth, microwave ovens)</li>
+<li>Weak signal / obstacles such as walls</li>
+<li>Multipath (reflections causing fading)</li>
+<li>Antenna orientation</li>
+</ul>
+<h3 id="shared-medium-and-contention">Shared Medium and Contention</h3>
+<p>Wi-Fi is a shared medium, so devices must coordinate access to avoid collisions. This is done using a protocol called <strong>CSMA/CA</strong> (Carrier Sense Multiple Access with Collision Avoidance):</p>
+<ol>
+<li><strong>Listen before talk:</strong> devices check if the channel is clear before transmitting.</li>
+<li>If idle, they transmit. </li>
+<li>If the channel is busy, they wait for a random backoff time before trying again.</li>
+<li>If the sender does not receive an ACK, it assumes the frame was lost (collision/interference) and retries after backoff.</li>
+</ol>
+<p>This means that latency can be variable, especially in crowded environments, and throughput can decrease as more devices compete for the same channel.</p>
+<p>Wi-Fi transmissions expect acknowledgments (ACKs) to confirm successful delivery. If an ACK is not received, the sender will retry the transmission, which can further increase latency.</p>
+<h3 id="speed">Speed</h3>
+<p>Wi-Fi speeds can vary widely based on the standard (e.g., 802.11n, 802.11ac, 802.11ax), signal strength, interference, and the number of devices sharing the network. We have the <strong>PHYSICAL data rate</strong> (e.g., 300 Mbps) which comes from the modulation scheme and channel width, and the <strong>ACTUAL throughput</strong> (e.g., 100 Mbps) which is what applications experience after accounting for protocol overhead, retransmissions, and contention.</p>
+<h3 id="architectures">Architectures</h3>
+<ul>
+<li><strong>Infrastructure mode:</strong> devices connect to an AP (access point) which manages the network. This is the most common setup for home and office Wi-Fi.</li>
+</ul>
+<p><img alt="Infrastructure mode" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg" /></p>
+<ul>
+<li><strong>Ad-hoc mode:</strong> devices connect directly to each other without an AP. This is less common and typically used for specific applications like device-to-device communication.</li>
+<li><strong>Mesh networks:</strong> multiple APs work together to provide seamless coverage over a larger area. Devices can connect to the nearest AP, and the APs communicate with each other to route traffic.</li>
+</ul>
+<h2 id="wi-fi-stack">Wi-Fi Stack</h2>
+<p>A stack is a set of software layers that work together to implement a network protocol. The Wi-Fi stack has several layers.</p>
+<p><img alt="Wi-Fi Stack Protocols" src="../Images/Wifi_layer.ppm" /></p>
+<h3 id="1-wi-fi-radio-l1-80211-phymac-l2">1) Wi-Fi radio (L1) + 802.11 (PHY/MAC) (L2)</h3>
+<p>This is the “over-the-air” part.</p>
+<p><strong>PHY (Physical Layer):</strong></p>
+<ul>
+<li>Converts bits ↔ radio waves</li>
+<li>Chooses modulation/coding rate (it adapts based on link quality)</li>
+<li>Deals with channel width, frequency band, signal strength, noise</li>
+</ul>
+<details class="glossary">
+<summary>Glossary</summary>
+<ul>
+<li><strong>Modulation:</strong> how bits are represented as changes in the radio signal (e.g., BPSK, QAM).</li>
+<li><strong>Coding rate:</strong> how much error correction is used (e.g., 1/2, 3/4). A 3/4 coding rate means that for every 4 bits sent, 3 are data and 1 is error correction. Higher coding rates (like 5/6) have less error correction and can achieve higher speeds but are more susceptible to errors.</li>
+<li><strong>Channel width:</strong> how much spectrum is used (e.g., 20 MHz, 40 MHz).</li>
+</ul>
+</details>
+<p><strong>MAC (Medium Access Control Layer):</strong></p>
+<ul>
+<li>Frames: how Wi-Fi packages data on the air</li>
+<li>Who gets to talk: CSMA/CA (listen-before-talk + random backoff)</li>
+<li>ACK + retries: link-layer reliability</li>
+<li>Association/authentication: joining an AP (access point)</li>
+<li>Encryption at link layer (WPA2/WPA3)</li>
+</ul>
+<h3 id="2-ip-internet-protocol-l3">2) IP (Internet Protocol) (L3)</h3>
+<p>IP is the “network layer” that allows communication across different networks. It provides logical addressing (IP addresses) and routing. Basic concepts:</p>
+<ul>
+<li><strong>IP address:</strong> identifies the device on a network (e.g., 192.168.1.27)</li>
+<li><strong>Routing:</strong> decides where packets go (local vs internet via gateway)</li>
+<li><strong>ICMP/ping:</strong> is often used to test reachability (not required, but useful)</li>
+</ul>
+<p>You could be Wi-Fi connected (Layer 2) but have no IP address (Layer 3), which means you can’t communicate with other devices or the internet. For example, if a DHCP (Dynamic Host Configuration Protocol) request fails or if a gateway is not configured.</p>
+<details class="glossary">
+<summary>Glossary</summary>
+<ul>
+<li><strong>DHCP:</strong> a protocol that automatically assigns IP addresses to devices on a network.</li>
+<li><strong>Gateway:</strong> a device that routes traffic from a local network to other networks (e.g., the internet).</li>
+</ul>
+</details>
+<h3 id="3-transport-tcpudp-l4">3) Transport (TCP/UDP) (L4)</h3>
+<p>This is where apps choose behavior.</p>
+<p><strong>TCP (Transmission Control Protocol):</strong></p>
+<ul>
+<li>Connection-oriented (handshake)</li>
+<li>Reliable (retries, ACKs)</li>
+<li>Congestion control (adapts to network conditions)</li>
+<li>Great for HTTP, MQTT, etc.</li>
+</ul>
+<p><strong>UDP (User Datagram Protocol):</strong></p>
+<ul>
+<li>Connectionless (no handshake)</li>
+<li>Low overhead (no retries, no congestion control)</li>
+<li>App must handle loss/reordering if needed</li>
+<li>Great for real-time apps where latency matters more than reliability.</li>
+</ul>
+<p><strong>Reflection</strong>: When should you use TCP vs UDP?</p>
+<details class="answer">
+<summary>Answer</summary>
+<ul>
+<li>Use TCP when you need reliability and can tolerate some latency (e.g., web browsing, file transfer, MQTT).</li>
+<li>Use UDP when you need low latency and can tolerate some loss (e.g., real-time gaming, voice/video calls, some IoT sensor data).</li>
+</ul>
+</details>
+<h3 id="application-protocols-l5-l7">Application Protocols (L5-L7)</h3>
+<p>Here we are bundling layers 5-7 together as “application protocols.” Because in practice session/presentation are not distinct layers in the way L1–L4 are, they are considered part of the application layer.</p>
+<p>On top of TCP/UDP, we have application protocols that define how data is structured and exchanged. Examples:</p>
+<ul>
+<li><strong>HTTP/HTTPS</strong> for web communication over TCP</li>
+<li><strong>MQTT</strong> for lightweight publish/subscribe messaging in IoT over TCP</li>
+<li><strong>CoAP</strong> for constrained devices and RESTful APIs over UDP</li>
+<li><strong>WebSockets</strong> for real-time bidirectional communication over HTTP</li>
+</ul>
+<details class="glossary">
+<summary>Glossary</summary>
+<ul>
+<li><strong>HTTP (Hypertext Transfer Protocol):</strong> a protocol for fetching resources (like web pages) over the internet. It is built on top of TCP.</li>
+<li><strong>MQTT (Message Queuing Telemetry Transport):</strong> a lightweight messaging protocol designed for IoT devices using a publish/subscribe model.</li>
+<li><strong>CoAP (Constrained Application Protocol):</strong> a protocol designed for constrained devices and networks, often used in IoT. It is similar to HTTP but optimized for low-power devices and can run over UDP.</li>
+<li><strong>WebSockets:</strong> a protocol that provides full-duplex communication channels over a single TCP connection.</li>
+</ul>
+</details>
+<h2 id="rf-channel-basics">RF + Channel basics</h2>
+<h3 id="frequency-bands">Frequency Bands</h3>
+<p>Frequency bands are specific radio spectrum ranges used by routers to transmit data.
+Wi-Fi operates in different frequency bands, primarily 2.4 GHz and 5 GHz (and now 6 GHz with Wi-Fi 6E). Each band has its own characteristics:</p>
+<p><strong>2.4 GHz:</strong></p>
+<ul>
+<li>Longer range, better penetration through walls</li>
+<li>More interference (crowded with other devices like Bluetooth, microwaves)</li>
+<li>Fewer channels (only 3 non-overlapping channels in most regions: 1, 6, 11)</li>
+<li>Range: 2.400 GHz to 2.4835 GHz</li>
+</ul>
+<p><strong>5 GHz:</strong></p>
+<ul>
+<li>Shorter range, less penetration through walls</li>
+<li>Less interference (more channels, less crowded)</li>
+<li>Higher potential speeds (wider channels, more spatial streams)</li>
+<li>Range: 5.150 GHz to 5.825 GHz</li>
+</ul>
+<p><strong>6 GHz (Wi-Fi 6E):</strong></p>
+<ul>
+<li>Even more channels, less interference, but shorter range than 5 GHz.</li>
+</ul>
+<p>The lower the frequency, the better it can penetrate obstacles and cover longer distances, but it may be more crowded and have lower maximum speeds. The higher the frequency, the more bandwidth is available for faster speeds, but it may have a shorter range and be more affected by obstacles.</p>
+<h3 id="channels">Channels</h3>
+<p>A channel is just a slice of spectrum centered around a specific frequency. Wi-Fi standards define a new channel number every 5 MHz.</p>
+<p>Each channel has a certain width (e.g., 20 MHz, 40 MHz) which determines how much spectrum it uses. Wider channels can provide higher speeds but are more susceptible to interference and may reduce the number of available channels.</p>
+<p>In the 2.4 GHz band, because channels are 20MHz wide but spaced only 5MHz apart, they overlap significantly.
+- Channel 1 is centered at 2.412 GHz.
+- Channel 6 is centered at 2.437 GHz.
+- Channel 11 is centered at 2.462 GHz.
+These are the only non-overlapping channels.</p>
+<p><img alt="Wi-Fi Channels" src="../Images/channel_overlap.jpeg" /></p>
+<h3 id="signal-quality-metrics">Signal Quality Metrics</h3>
+<p><strong>RSSI (Received Signal Strength Indicator):</strong> measures the power level of the received signal. Higher RSSI (closer to 0) means stronger signal, but it does not account for noise or interference.</p>
+<p><strong>SNR (Signal-to-Noise Ratio):</strong> measures the ratio of signal power to noise power. Higher SNR means better signal quality and potential for higher data rates.</p>
+<p>You could have a high RSSI but low SNR if there is a lot of interference or noise, which can lead to poor performance.</p>
+<p>Common interference sources include:
+- Other Wi-Fi networks (especially on the same or overlapping channels)
+- Bluetooth devices (which also operate in the 2.4 GHz band)
+- Microwave ovens (which can cause bursts of interference in the 2.4 GHz band)
+- Cheap USB 3.0 cables (which can emit interference in the 2.4 GHz band)</p>
+<p>RSSI is measured in dBm (decibels relative to 1 milliwatt) and is typically a negative value. </p>
+<ul>
+<li>-30 to -50 dBm: excellent signal</li>
+<li>-50 to -67 dBm: good signal</li>
+<li>-67 to -75 dBm: barely ok signal</li>
+<li>&lt; -90 dBm: unreliable signal</li>
+</ul>
+<h2 id="80211-core-concepts">802.11 Core Concepts</h2>
+<p>802.11 is the standard that defines Wi-Fi. </p>
+<h3 id="roles-and-identities">Roles and identities</h3>
+<ul>
+<li><strong>Station (STA):</strong> a device that connects to Wi-Fi (e.g., your phone, ESP32)</li>
+<li><strong>Access Point (AP):</strong> a device that provides Wi-Fi connectivity (e.g., your router)</li>
+<li><strong>SSID (Service Set Identifier):</strong> the name of the Wi-Fi network (e.g., “MyHomeWiFi”)</li>
+<li><strong>BSSID (Basic Service Set Identifier):</strong> the MAC address of the AP’s radio interface (e.g., <code>00:11:22:33:44:55</code>)</li>
+</ul>
+<h3 id="frames-types">Frames types</h3>
+<p>Wi-Fi doesn’t just send “data.” It sends different frame types:</p>
+<p><strong>Management frames:</strong> used for network management 
+- Beacon: AP advertises “I exist” + capabilities.
+- Probe request/response: “Who’s out there?” scanning.
+- Authentication / Association: joining the AP.</p>
+<p><strong>Control frames:</strong> used for controlling access to the medium
+- ACK: acknowledgment of received frames
+- RTS/CTS: Request to Send / Clear to Send for collision avoidance</p>
+<p><strong>Data frames:</strong> used for carrying user data 
+- App bytes</p>
+<h3 id="join-sequence">Join sequence</h3>
+<ol>
+<li><strong>Scan:</strong> Passive (listen for beacons) or Active (send probe requests).</li>
+<li><strong>Authentication:</strong> Client proves identity to AP.</li>
+<li><strong>Association:</strong> Client and AP exchange capabilities (e.g., supported rates, security).</li>
+<li><strong>Security handshake (4-Way Handshake):</strong> WPA2/WPA3 key exchange for encryption.</li>
+<li><strong>DHCP:</strong> Get IP address, gateway, DNS.</li>
+</ol>
+<h2 id="network-layer-concepts">Network Layer Concepts</h2>
+<h3 id="addressing">Addressing</h3>
+<ul>
+<li><strong>MAC address (Layer 2):</strong> local link identifier (Wi‑Fi/Ethernet). Used for communication <strong>within the local network</strong>.</li>
+<li><strong>IP address (Layer 3):</strong> logical network address. Used for communication <strong>across networks</strong> (via routers).</li>
+<li><strong>Subnet mask:</strong> determines which IPs are “local” vs “remote.”</li>
+<li><strong>Gateway:</strong> the router that forwards packets outside your local subnet.</li>
+<li><strong>DNS:</strong> translates hostnames to IP addresses.</li>
+<li><strong>Port:</strong> identifies the service/application on a host (e.g., HTTP=80, MQTT=1883).</li>
+</ul>
+<blockquote>
+<p>Analogy: MAC = person’s face (identity), IP = postal address (location), Port = apartment number (specific unit).</p>
+</blockquote>
+<h2 id="http-basics">HTTP Basics</h2>
+<p>HTTP is a <strong>request/response</strong> application protocol. A <strong>client</strong> sends a request to a <strong>server</strong>, and the server returns a response.</p>
+<h3 id="url-resource-and-endpoint">URL, resource, and endpoint</h3>
+<ul>
+<li>A <strong>resource</strong> is “a thing” you can access, like <code>temperature</code> or <code>config</code>.</li>
+<li>An <strong>endpoint</strong> is the URL path to that resource, e.g.:</li>
+<li><code>/api/v1/temperature</code></li>
+<li><code>/api/v1/device/config</code></li>
+</ul>
+<p>A full URL looks like:
+<code>http://example.com/api/v1/temperature</code></p>
+<h3 id="get-vs-post-the-minimum-you-need">GET vs POST (the minimum you need)</h3>
+<p><strong>GET</strong>
+- Purpose: <strong>read</strong> data (fetch a resource)
+- Payload: usually <strong>no body</strong>
+- Example: "Give me the latest temperature"</p>
+<p><strong>POST</strong>
+- Purpose: <strong>submit</strong> data (create or trigger something on the server)
+- Payload: usually a <strong>body</strong> (often JSON)
+- Example: "Store this temperature sample"</p>
+<blockquote>
+<p>Rule of thumb: <strong>GET reads</strong>, <strong>POST sends</strong>.</p>
+</blockquote>
+<h3 id="query-parameters-vs-body-payload">Query parameters vs body payload</h3>
+<p><strong>Query parameters</strong> go in the URL (common with GET).
+<strong>Body payload</strong> goes in the request body (common with POST), typically JSON:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;team3-node07&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;temp_c&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.6</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700000123</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="status-codes">Status codes</h3>
+<ul>
+<li><strong>200 OK:</strong> request succeeded, response contains the requested data.</li>
+<li><strong>201 Created:</strong> resource was successfully created (common with POST).</li>
+<li><strong>204 No Content:</strong> success but no body</li>
+<li><strong>400 Bad Request:</strong> your request format is wrong</li>
+<li><strong>401 Unauthorized:</strong> missing/wrong auth</li>
+<li><strong>404 Not Found:</strong> wrong endpoint path</li>
+<li><strong>500 Server Error:</strong> server failed (not you… usually)</li>
+</ul>
+<h2 id="mqtt-basics">MQTT Basics</h2>
+<p>MQTT is a lightweight messaging protocol designed for IoT. Unlike HTTP, MQTT is publish/subscribe and typically uses a broker.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ESP32 (publisher) ----\
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                       \
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                        ---&gt; MQTT Broker ---&gt; subscribers (dashboard, other services)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                       /
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ESP32 (subscriber) ---/
+</span></code></pre></div>
+<ul>
+<li><strong>Broker</strong>: the “message hub” (e.g., Mosquitto, cloud broker)</li>
+<li><strong>Client</strong>: any device/app connecting to the broker (ESP32, laptop, dashboard)</li>
+<li><strong>Topic</strong>: a string that routes messages (like an address), <code>e.g. ibero/se2/team3/node07/telemetry</code>
+    A good topic is hierarchical and descriptive, often using slashes to separate levels (e.g., <code>ibero/se2/team3/node07/telemetry</code>).</li>
+<li><strong>Payload</strong>: the data you send (often JSON)</li>
+</ul>
+<h3 id="publish-vs-subscribe">Publish vs Subscribe</h3>
+<ul>
+<li><strong>Publish:</strong> send a message to a topic (e.g., ESP32 sends telemetry)</li>
+<li><strong>Subscribe:</strong> receive messages from a topic (e.g., dashboard shows telemetry)</li>
+</ul>
+<h3 id="qos-quality-of-service">QoS (Quality of Service)</h3>
+<ul>
+<li><strong>QoS 0:</strong> at most once (fire and forget, no retries)</li>
+<li><strong>QoS 1:</strong> at least once (retries until ACK, may cause duplicates)</li>
+<li><strong>QoS 2:</strong> exactly once (two-phase handshake, more overhead)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tooltips", "toc.integrate", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
